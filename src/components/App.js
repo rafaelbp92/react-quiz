@@ -26,6 +26,8 @@ function reducer(state, action) {
       return { ...state, status: "error" };
     case "start":
       return { ...state, status: "active" };
+    case "restart":
+      return { ...initialState, questions: state.questions, status: "ready" };
     case "newAnswer":
       const question = state.questions.at(state.index);
 
@@ -105,6 +107,7 @@ export default function App() {
             maxPoints={maxPoints}
             points={points}
             highScore={highScore}
+            dispatch={dispatch}
           />
         )}
       </Main>
